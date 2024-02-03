@@ -1574,7 +1574,7 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
                         html += '</span>'
                       html += '</div>'
                       html += '<svg width="80" height="30">'
-                        html += '<path d="M40 -5 v40" id="perso3#id#" class="'
+                        html += '<path d="M40 0 v60 h-49" id="perso3#id#" class="'
                           if (HidePathPerso3#id#) html += ' hidden#id#'
                         html += '"/>'
                         html += '<circle r="3.4" class="perso3#id#'
@@ -1726,7 +1726,21 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
                       html += '</span>'
                     html += '</div>'
                     html += '<span class="label#id#">' + perso4Name#id# + '</span>'
-                  html += '</div>'
+                    html += '<svg width="80" height="30">'
+                      html += '<path d="M0 0 v0 h-99" id="perso4#id#" class="'
+                        if (HidePathPerso4#id#) html += ' hidden#id#'
+                      html += '"/>'
+                      html += '<circle r="3.4" class="perso4#id#'
+                        if(perso4State#id#.value == 0 || HideCirclePerso4#id#) html += ' hidden#id#'
+                        html += '" vector-effect="non-scaling-stroke" id="CirclePerso4ToHome#id#">'
+                          html += '<animateMotion dur="1.66s" repeatCount="indefinite" calcMode="linear"'
+                            if (InvertedCirclePerso4#id#) html += ' keyPoints="1;0" keyTimes="0;1"'
+                          html += '>'
+                            html += '<mpath xlink:href="#perso4#id#" />'
+                          html += '</animateMotion>'
+                        html += '</circle>'
+                      html += '</svg>'
+                    html += '</div>'
                   } else {
                   html += '<div class="spacer#id#"></div>'
                   }
@@ -1860,7 +1874,7 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
                     html += '<!-- (hasPerso5) -->'
                     html += '<div class="circle-container#id# perso5#id# bottom#id#">'
                       html += '<svg width="80" height="30">'
-                        html += '<path d="M40 35 v-40" id="perso5#id#" class="'
+                        html += '<path d="M40 30 v-60 h-50" id="perso5#id#" class="'
                           if (HidePathPerso5#id#) html += 'hidden#id#'
                         html +='" />'
                           html += '<circle r="3.4" class="perso5#id#'
@@ -2425,8 +2439,21 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
       height: 130px;
     }
 
-    circle-container#id#.perso3#id# > svg {
+    .circle-container#id#.perso3#id# svg{
       overflow: visible;
+      fill-opacity: 0%;
+    }
+
+    .circle-container#id#.perso4#id# svg{
+      overflow: visible;
+      position: relative;
+      top: -60px;
+      fill-opacity: 0%;
+    }
+
+    .circle-container#id#.perso5#id# svg{
+      overflow: visible;
+      fill-opacity: 0%;
     }
 
     .circle-container#id#.bottom#id# {
