@@ -766,7 +766,7 @@
             //if (debug#id#) console.log('| | gas_Inverted -> true')
           //}
           
-          if(perso3Unit#id# == ''){
+          if(Perso3Unit#id# == ''){
             jeedom.cmd.byId({
               id : '#Perso3#',
               async: false,
@@ -775,24 +775,24 @@
                 if (debug#id#) console.log('| | ERREUR jeedom.cmd.byId(Perso3) !!!')
               },
               success: function (cmdInfo2) {
-                perso3Unit#id# = cmdInfo2.unite
+                Perso3Unit#id# = cmdInfo2.unite
               }
             })
           }
           if (debug#id#) {
-            console.log('| | value  = ' + perso3Value + '' + perso3Unit#id#)
+            console.log('| | value  = ' + perso3Value + '' + Perso3Unit#id#)
             if (Perso3Round#id#) {
               console.log('| | Perso3Round  = ' + Perso3Round#id#)
               console.log('| | value round  = ' + Perso3Value.toFixed(Perso3Round#id#))
             }
             if (Perso3Dec#id#) console.log('| | Perso3Dec  = ' + Perso3Dec#id#) 
           }
-          perso3State#id# = autoValueArray#id#(perso3Value,perso3Unit#id#,Perso3Dec#id#,Perso3Round#id#)
+          perso3State#id# = autoValueArray#id#(perso3Value,Perso3Unit#id#,Perso3Dec#id#,Perso3Round#id#)
           if (updateByCmd#id#) {
             jeedom.cmd.addUpdateFunction('#Perso3#', function(_options) {
               if (_options.value != undefined) 
               {
-                let perso3State = autoValueArray#id#(_options.value,perso3Unit#id#,Perso3Dec#id#,Perso3Round#id#)
+                let perso3State = autoValueArray#id#(_options.value,Perso3Unit#id#,Perso3Dec#id#,Perso3Round#id#)
                 if (debug#id#) console.log('perso3State.value  = ' + perso3State.value)
                 if (debug#id#) console.log('perso3State.unit  = ' + perso3State.unit)
                 if (perso3State.value > 0 && !HideCirclePerso3#id#) document.getElementById("CirclePerso3ToHome#id#")?.classList.remove("hidden#id#")
