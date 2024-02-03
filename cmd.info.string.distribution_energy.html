@@ -867,6 +867,66 @@
       })
     }
     if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
+
+    if (debug#id#) console.log('| ┌─────────────────────── Param Perso 5 ────────────────────')
+    var hasPerso5#id# = false
+    var perso5State#id# = 0
+    //var gasInverted#id# = false
+    if(is_numeric('#Perso5#')){
+      jeedom.cmd.execute({
+        id : '#Perso5#',
+        async: false,
+        noCache: true,
+        error: function(error) {
+          if (debug#id#) console.log('| | ERREUR jeedom.cmd.execute(Perso5) !!!')
+        },
+        success: function (perso5Value) {
+          hasPerso5#id# = true
+          //if('#GasInverted#' != '#'+'GasInverted#' && '#GasInverted#' == 1){
+            //gasInverted#id# = true
+            //if (debug#id#) console.log('| | gas_Inverted -> true')
+          //}
+          
+          if(Perso5Unit#id# == ''){
+            jeedom.cmd.byId({
+              id : '#Perso5#',
+              async: false,
+              noCache: true,
+              error: function(error) {
+                if (debug#id#) console.log('| | ERREUR jeedom.cmd.byId(Perso5) !!!')
+              },
+              success: function (cmdInfo2) {
+                Perso5Unit#id# = cmdInfo2.unite
+              }
+            })
+          }
+          if (debug#id#) {
+            console.log('| | value  = ' + perso5Value + '' + Perso5Unit#id#)
+            if (Perso5Round#id#) {
+              console.log('| | Perso5Round  = ' + Perso5Round#id#)
+              console.log('| | value round  = ' + Perso5Value.toFixed(Perso5Round#id#))
+            }
+            if (Perso5Dec#id#) console.log('| | Perso4Dec  = ' + Perso5Dec#id#) 
+          }
+          perso5State#id# = autoValueArray#id#(perso5Value,Perso5Unit#id#,Perso5Dec#id#,Perso5Round#id#)
+          if (updateByCmd#id#) {
+            jeedom.cmd.addUpdateFunction('#Perso4#', function(_options) {
+              if (_options.value != undefined) 
+              {
+                let perso4State = autoValueArray#id#(_options.value,Perso5Unit#id#,Perso5Dec#id#,Perso5Round#id#)
+                if (debug#id#) console.log('perso5State.value  = ' + perso5State.value)
+                if (debug#id#) console.log('perso5State.unit  = ' + perso5State.unit)
+                if (perso5State.value > 0 && !HideCirclePerso5#id#) document.getElementById("CirclePerso5ToHome#id#")?.classList.remove("hidden#id#")
+                else document.getElementById("CirclePerso5ToHome#id#")?.classList.add("hidden#id#")
+                //if ((gasState.value == 0 && !HideIfEmpty#id#) || gasState.value > 0) document.getElementById("GasValue#id#").innerHTML = gasState.value + gasState.unit
+                if ((perso5State.value == 0 && !HideIfEmpty#id#) || perso5State.value != 0) document.getElementById("Perso5Value#id#").innerHTML = perso5State.value + perso5State.unit
+              }
+            })
+          }
+        }
+      })
+    }
+    if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
       
     if (debug#id#) console.log('| ┌───────────────────── Param BATTERY ──────────────────')
     var hasBattery#id# = false
