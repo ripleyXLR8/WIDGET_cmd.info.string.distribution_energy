@@ -217,7 +217,7 @@
             ////////////////////////// Perso 4 /////////////////////////
     var Perso4Unit#id# = ''
     var perso4Name#id# = "Perso 3"
-    var perso4Icon#id# = 0
+    var perso4Icon#id# = "icon techno-oven4"
     var HideCirclePerso4#id# = false
     var HidePathPerso4#id# = false
     var InvertedCirclePerso4#id# = false
@@ -225,7 +225,7 @@
     var Perso4Round#id# = false
     if ('#Perso4Unit#' != '#'+'Perso4Unit#') Perso4Unit#id# = '#Perso4Unit#'
     if ('#Perso4Rename#' != '#'+'Perso4Rename#') perso4Name#id# = '#Perso4Rename#'
-    if ('#Perso4Icon#' != '#'+'Perso4Icon#') perso4Icon#id# = '#Perso4Icon#'
+    if ('#Perso4Icon#' != '#'+'Perso4Icon#') Perso4Icon#id# = '#Perso4Icon#'
     if (is_numeric('#HideCirclePerso4#') && '#HideCirclePerso4#' == 1) HideCirclePerso4#id# = true
     if (is_numeric('#HidePathPerso4#') && '#HidePathPerso4#' == 1) { 
       HidePathPerso4#id# = true
@@ -2316,6 +2316,9 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
     --border-color#id#: var(--link-color);
     --perso1-color#id#: #a100ff;
     --perso2-color#id#: #6aff53;
+    --perso3-color#id#: #FB623A;
+    --perso4-color#id#: #FB623A;
+    --perso5-color#id#: #FB623A;
     --powerfailure-color#id#: red;
     --circle-batterie#id#: #f06292;
     --fontSize_perso#id#: 14px;
@@ -2519,6 +2522,40 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
       stroke-width: 4;
       fill: var(--perso2-color#id#);
     }
+
+    .perso3#id# .circle#id# {
+      border-color: var(--perso3-color#id#);
+    }
+    .perso3#id# circle, .perso3#id# svg:not(.svg-icon#id#) path {
+      stroke: var(--perso3-color#id#);
+    }
+    circle.perso3#id# {
+      stroke-width: 4;
+      fill: var(--perso3-color#id#);
+    }
+
+    .perso4#id# .circle#id# {
+      border-color: var(--perso4-color#id#);
+    }
+    .perso4#id# circle, .perso4#id# svg:not(.svg-icon#id#) path {
+      stroke: var(--perso4-color#id#);
+    }
+    circle.perso4#id# {
+      stroke-width: 4;
+      fill: var(--perso4-color#id#);
+    }
+
+    .perso5#id# .circle#id# {
+      border-color: var(--perso5-color#id#);
+    }
+    .perso5#id# circle, .perso5#id# svg:not(.svg-icon#id#) path {
+      stroke: var(--perso5-color#id#);
+    }
+    circle.perso5#id# {
+      stroke-width: 4;
+      fill: var(--perso5-color#id#);
+    }
+
     circle.solar#id#,
     path.solar#id# {
       stroke: var(--solar-color#id#);
