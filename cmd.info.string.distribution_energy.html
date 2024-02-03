@@ -913,7 +913,7 @@
             jeedom.cmd.addUpdateFunction('#Perso4#', function(_options) {
               if (_options.value != undefined) 
               {
-                let perso4State = autoValueArray#id#(_options.value,Perso5Unit#id#,Perso5Dec#id#,Perso5Round#id#)
+                let perso5State = autoValueArray#id#(_options.value,Perso5Unit#id#,Perso5Dec#id#,Perso5Round#id#)
                 if (debug#id#) console.log('perso5State.value  = ' + perso5State.value)
                 if (debug#id#) console.log('perso5State.unit  = ' + perso5State.unit)
                 if (perso5State.value > 0 && !HideCirclePerso5#id#) document.getElementById("CirclePerso5ToHome#id#")?.classList.remove("hidden#id#")
