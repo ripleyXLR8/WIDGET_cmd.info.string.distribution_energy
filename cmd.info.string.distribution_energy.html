@@ -744,8 +744,69 @@
           }
         }
       })
+
+      if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
+      
+    if (debug#id#) console.log('| ┌─────────────────────── Param Perso3 ────────────────────')
+    var hasPerso3#id# = false
+    var perso3State#id# = 0
+    //var gasInverted#id# = false
+    if(is_numeric('#Perso3#')){
+      jeedom.cmd.execute({
+        id : '#Perso3#',
+        async: false,
+        noCache: true,
+        error: function(error) {
+          if (debug#id#) console.log('| | ERREUR jeedom.cmd.execute(Perso3) !!!')
+        },
+        success: function (perso3Value) {
+          hasPerso3#id# = true
+          //if('#GasInverted#' != '#'+'GasInverted#' && '#GasInverted#' == 1){
+            //gasInverted#id# = true
+            //if (debug#id#) console.log('| | gas_Inverted -> true')
+          //}
+          
+          if(perso3Unit#id# == ''){
+            jeedom.cmd.byId({
+              id : '#Perso3#',
+              async: false,
+              noCache: true,
+              error: function(error) {
+                if (debug#id#) console.log('| | ERREUR jeedom.cmd.byId(Perso3) !!!')
+              },
+              success: function (cmdInfo2) {
+                perso3Unit#id# = cmdInfo2.unite
+              }
+            })
+          }
+          if (debug#id#) {
+            console.log('| | value  = ' + perso3Value + '' + perso3Unit#id#)
+            if (Perso3Round#id#) {
+              console.log('| | Perso3Round  = ' + Perso3Round#id#)
+              console.log('| | value round  = ' + Perso3Value.toFixed(Perso3Round#id#))
+            }
+            if (Perso3Dec#id#) console.log('| | Perso3Dec  = ' + Perso3Dec#id#) 
+          }
+          perso3State#id# = autoValueArray#id#(perso3Value,perso3Unit#id#,Perso3Dec#id#,Perso3Round#id#)
+          if (updateByCmd#id#) {
+            jeedom.cmd.addUpdateFunction('#Perso3#', function(_options) {
+              if (_options.value != undefined) 
+              {
+                let perso3State = autoValueArray#id#(_options.value,perso3Unit#id#,Perso3Dec#id#,Perso3Round#id#)
+                if (debug#id#) console.log('perso3State.value  = ' + perso3State.value)
+                if (debug#id#) console.log('perso3State.unit  = ' + perso3State.unit)
+                if (perso3State.value > 0 && !HideCirclePerso3#id#) document.getElementById("CirclePerso3ToHome#id#")?.classList.remove("hidden#id#")
+                else document.getElementById("CirclePerso3ToHome#id#")?.classList.add("hidden#id#")
+                //if ((gasState.value == 0 && !HideIfEmpty#id#) || gasState.value > 0) document.getElementById("GasValue#id#").innerHTML = gasState.value + gasState.unit
+                if ((perso3State.value == 0 && !HideIfEmpty#id#) || perso3State.value != 0) document.getElementById("Perso3Value#id#").innerHTML = perso3State.value + perso3State.unit
+              }
+            })
+          }
+        }
+      })
     }
     if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
+    }
       
     if (debug#id#) console.log('| ┌───────────────────── Param BATTERY ──────────────────')
     var hasBattery#id# = false
