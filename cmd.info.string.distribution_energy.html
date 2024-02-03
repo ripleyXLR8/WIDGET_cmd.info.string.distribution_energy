@@ -745,7 +745,7 @@
         }
       })
 
-      if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
+    if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
       
     if (debug#id#) console.log('| ┌─────────────────────── Param Perso3 ────────────────────')
     var hasPerso3#id# = false
@@ -799,6 +799,67 @@
                 else document.getElementById("CirclePerso3ToHome#id#")?.classList.add("hidden#id#")
                 //if ((gasState.value == 0 && !HideIfEmpty#id#) || gasState.value > 0) document.getElementById("GasValue#id#").innerHTML = gasState.value + gasState.unit
                 if ((perso3State.value == 0 && !HideIfEmpty#id#) || perso3State.value != 0) document.getElementById("Perso3Value#id#").innerHTML = perso3State.value + perso3State.unit
+              }
+            })
+          }
+        }
+      })
+    }
+    if (debug#id#) console.log('| └──────────────────────────────────────────────────────')
+    }
+
+    if (debug#id#) console.log('| ┌─────────────────────── Param Perso4 ────────────────────')
+    var hasPerso4#id# = false
+    var perso4State#id# = 0
+    //var gasInverted#id# = false
+    if(is_numeric('#Perso4#')){
+      jeedom.cmd.execute({
+        id : '#Perso4#',
+        async: false,
+        noCache: true,
+        error: function(error) {
+          if (debug#id#) console.log('| | ERREUR jeedom.cmd.execute(Perso4) !!!')
+        },
+        success: function (perso4Value) {
+          hasPerso4#id# = true
+          //if('#GasInverted#' != '#'+'GasInverted#' && '#GasInverted#' == 1){
+            //gasInverted#id# = true
+            //if (debug#id#) console.log('| | gas_Inverted -> true')
+          //}
+          
+          if(Perso4Unit#id# == ''){
+            jeedom.cmd.byId({
+              id : '#Perso4#',
+              async: false,
+              noCache: true,
+              error: function(error) {
+                if (debug#id#) console.log('| | ERREUR jeedom.cmd.byId(Perso4) !!!')
+              },
+              success: function (cmdInfo2) {
+                Perso4Unit#id# = cmdInfo2.unite
+              }
+            })
+          }
+          if (debug#id#) {
+            console.log('| | value  = ' + perso4Value + '' + Perso4Unit#id#)
+            if (Perso4Round#id#) {
+              console.log('| | Perso4Round  = ' + Perso4Round#id#)
+              console.log('| | value round  = ' + Perso4Value.toFixed(Perso4Round#id#))
+            }
+            if (Perso4Dec#id#) console.log('| | Perso4Dec  = ' + Perso4Dec#id#) 
+          }
+          perso4State#id# = autoValueArray#id#(perso4Value,Perso4Unit#id#,Perso4Dec#id#,Perso4Round#id#)
+          if (updateByCmd#id#) {
+            jeedom.cmd.addUpdateFunction('#Perso4#', function(_options) {
+              if (_options.value != undefined) 
+              {
+                let perso4State = autoValueArray#id#(_options.value,Perso4Unit#id#,Perso4Dec#id#,Perso4Round#id#)
+                if (debug#id#) console.log('perso4State.value  = ' + perso4State.value)
+                if (debug#id#) console.log('perso4State.unit  = ' + perso4State.unit)
+                if (perso4State.value > 0 && !HideCirclePerso4#id#) document.getElementById("CirclePerso4ToHome#id#")?.classList.remove("hidden#id#")
+                else document.getElementById("CirclePerso4ToHome#id#")?.classList.add("hidden#id#")
+                //if ((gasState.value == 0 && !HideIfEmpty#id#) || gasState.value > 0) document.getElementById("GasValue#id#").innerHTML = gasState.value + gasState.unit
+                if ((perso4State.value == 0 && !HideIfEmpty#id#) || perso4State.value != 0) document.getElementById("Perso4Value#id#").innerHTML = perso4State.value + perso4State.unit
               }
             })
           }
