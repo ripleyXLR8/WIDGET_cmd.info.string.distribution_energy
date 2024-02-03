@@ -191,6 +191,72 @@
     if ('#Perso2Color#' != '#'+'Perso2Color#') document.documentElement.style.setProperty('--perso2-color#id#', '#Perso2Color#')
     if (is_numeric('#Perso2Dec#') && '#Perso2Dec#' >= 0) Perso2Dec#id# = 1 + '' + "0".repeat('#Perso2Dec#')
     if (is_numeric('#Perso2Round#') && '#Perso2Round#' >= 0) Perso2Round#id# = '#Perso2Round#'
+
+        ////////////////////////// Perso 3 /////////////////////////
+    var Perso3Unit#id# = ''
+    var perso3Name#id# = "Perso 3"
+    var perso3Icon#id# = 0
+    var HideCirclePerso3#id# = false
+    var HidePathPerso3#id# = false
+    var InvertedCirclePerso3#id# = false
+    var Perso3Dec#id# = 1000
+    var Perso3Round#id# = false
+    if ('#Perso3Unit#' != '#'+'Perso3Unit#') Perso3Unit#id# = '#Perso3Unit#'
+    if ('#Perso3Rename#' != '#'+'Perso3Rename#') perso3Name#id# = '#Perso3Rename#'
+    if ('#Perso3Icon#' != '#'+'Perso3Icon#') perso3Icon#id# = '#Perso3Icon#'
+    if (is_numeric('#HideCirclePerso3#') && '#HideCirclePerso3#' == 1) HideCirclePerso3#id# = true
+    if (is_numeric('#HidePathPerso3#') && '#HidePathPerso3#' == 1) { 
+      HidePathPerso3#id# = true
+      HideCirclePerso3#id# = true
+    }
+    if (is_numeric('#InvertedCirclePerso3#') && '#InvertedCirclePerso3#' == 1) InvertedCirclePerso3#id# = true
+    if ('#Perso3Color#' != '#'+'Perso3Color#') document.documentElement.style.setProperty('--perso3-color#id#', '#Perso3Color#')
+    if (is_numeric('#Perso3Dec#') && '#Perso3Dec#' >= 0) Perso3Dec#id# = 1 + '' + "0".repeat('#Perso3Dec#')
+    if (is_numeric('#Perso3Round#') && '#Perso3Round#' >= 0) Perso3Round#id# = '#Perso3Round#'
+
+            ////////////////////////// Perso 4 /////////////////////////
+    var Perso4Unit#id# = ''
+    var perso4Name#id# = "Perso 3"
+    var perso4Icon#id# = 0
+    var HideCirclePerso4#id# = false
+    var HidePathPerso4#id# = false
+    var InvertedCirclePerso4#id# = false
+    var Perso4Dec#id# = 1000
+    var Perso4Round#id# = false
+    if ('#Perso4Unit#' != '#'+'Perso4Unit#') Perso4Unit#id# = '#Perso4Unit#'
+    if ('#Perso4Rename#' != '#'+'Perso4Rename#') perso4Name#id# = '#Perso4Rename#'
+    if ('#Perso4Icon#' != '#'+'Perso4Icon#') perso4Icon#id# = '#Perso4Icon#'
+    if (is_numeric('#HideCirclePerso4#') && '#HideCirclePerso4#' == 1) HideCirclePerso4#id# = true
+    if (is_numeric('#HidePathPerso4#') && '#HidePathPerso4#' == 1) { 
+      HidePathPerso4#id# = true
+      HideCirclePerso4#id# = true
+    }
+    if (is_numeric('#InvertedCirclePerso4#') && '#InvertedCirclePerso4#' == 1) InvertedCirclePerso4#id# = true
+    if ('#Perso4Color#' != '#'+'Perso4Color#') document.documentElement.style.setProperty('--perso4-color#id#', '#Perso4Color#')
+    if (is_numeric('#Perso4Dec#') && '#Perso4Dec#' >= 0) Perso4Dec#id# = 1 + '' + "0".repeat('#Perso4Dec#')
+    if (is_numeric('#Perso4Round#') && '#Perso4Round#' >= 0) Perso4Round#id# = '#Perso4Round#'
+
+            ////////////////////////// Perso 5 /////////////////////////
+    var Perso5Unit#id# = ''
+    var perso5Name#id# = "Perso 3"
+    var perso5Icon#id# = 0
+    var HideCirclePerso5#id# = false
+    var HidePathPerso5#id# = false
+    var InvertedCirclePerso5#id# = false
+    var Perso5Dec#id# = 1000
+    var Perso5Round#id# = false
+    if ('#Perso5Unit#' != '#'+'Perso5Unit#') Perso5Unit#id# = '#Perso5Unit#'
+    if ('#Perso5Rename#' != '#'+'Perso5Rename#') perso5Name#id# = '#Perso5Rename#'
+    if ('#Perso5Icon#' != '#'+'Perso5Icon#') perso5Icon#id# = '#Perso5Icon#'
+    if (is_numeric('#HideCirclePerso5#') && '#HideCirclePerso5#' == 1) HideCirclePerso5#id# = true
+    if (is_numeric('#HidePathPerso5#') && '#HidePathPerso5#' == 1) { 
+      HidePathPerso5#id# = true
+      HideCirclePerso5#id# = true
+    }
+    if (is_numeric('#InvertedCirclePerso5#') && '#InvertedCirclePerso5#' == 1) InvertedCirclePerso5#id# = true
+    if ('#Perso5Color#' != '#'+'Perso5Color#') document.documentElement.style.setProperty('--perso5-color#id#', '#Perso5Color#')
+    if (is_numeric('#Perso5Dec#') && '#Perso5Dec#' >= 0) Perso5Dec#id# = 1 + '' + "0".repeat('#Perso5Dec#')
+    if (is_numeric('#Perso5Round#') && '#Perso5Round#' >= 0) Perso5Round#id# = '#Perso5Round#'
     
     ////////////////////////// Home /////////////////////////
     var HideGreenValue#id# = false
@@ -1309,8 +1375,43 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
                   } else {
                     html += '<div class="spacer#id#"></div>'
                   }
+
+                  if(hasPerso3#id#) {
+                    html += '<!-- (hasPerso3) -->'
+                    html += '<div class="circle-container#id# perso3#id#">'
+                      html += '<span class="label#id#">' + perso3Name#id# + '</span>'
+                      html += '<div class="circle#id#">'
+                      if (perso3Icon#id# == null) {
+                        html += '<svg preserveAspectRatio="xMidYMid meet" focusable="false" viewBox="0 0 24 24" class="svg-icon#id#">'
+                          html += '<g>'
+                            html += '<path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.78 15.46 9.35 14.82 8.72C13.33 7.26 13 4.85 13.95 3C13 3.23 12.17 3.75 11.46 4.32C8.87 6.4 7.85 10.07 9.07 13.22C9.11 13.32 9.15 13.42 9.15 13.55C9.15 13.77 9 13.97 8.8 14.05C8.57 14.15 8.33 14.09 8.14 13.93C8.08 13.88 8.04 13.83 8 13.76C6.87 12.33 6.69 10.28 7.45 8.64C5.78 10 4.87 12.3 5 14.47C5.06 14.97 5.12 15.47 5.29 15.97C5.43 16.57 5.7 17.17 6 17.7C7.08 19.43 8.95 20.67 10.96 20.92C13.1 21.19 15.39 20.8 17.03 19.32C18.86 17.66 19.5 15 18.56 12.72L18.43 12.46C18.22 12 17.66 11.2 17.66 11.2M14.5 17.5C14.22 17.74 13.76 18 13.4 18.1C12.28 18.5 11.16 17.94 10.5 17.28C11.69 17 12.4 16.12 12.61 15.23C12.78 14.43 12.46 13.77 12.33 13C12.21 12.26 12.23 11.63 12.5 10.94C12.69 11.32 12.89 11.7 13.13 12C13.9 13 15.11 13.44 15.37 14.8C15.41 14.94 15.43 15.08 15.43 15.23C15.46 16.05 15.1 16.95 14.5 17.5H14.5Z"></path>'
+                          html += '</g>'
+                        html += '</svg>'
+                      } else if (perso3Icon#id# != 0) html += '<i class="' + perso3Icon#id# + '"></i>'
+                        html += '<span id="Perso3Value#id#">'
+                          if ((perso3State#id#.value == 0 && !HideIfEmpty#id#) || perso3State#id#.value != 0) html += perso3State#id#.value + '' + perso3State#id#.unit
+                        html += '</span>'
+                      html += '</div>'
+                      html += '<svg width="80" height="30">'
+                        html += '<path d="M40 -5 v40" id="perso3#id#" class="'
+                          if (HidePathPerso3#id#) html += ' hidden#id#'
+                        html += '"/>'
+                        html += '<circle r="3.4" class="perso3#id#'
+                          if(perso3State#id#.value == 0 || HideCirclePerso3#id#) html += ' hidden#id#'
+                          html += '" vector-effect="non-scaling-stroke" id="CirclePerso3ToHome#id#">'
+                          html += '<animateMotion dur="1.66s" repeatCount="indefinite" calcMode="linear"'
+                          if (InvertedCirclePerso3#id#) html += ' keyPoints="1;0" keyTimes="0;1"'
+                        html += '>'
+                          html += '<mpath xlink:href="#perso3#id#" />'
+                            html += '</animateMotion>'
+                          html += '</circle>'
+                        html += '</svg>'
+                      html += '</div>'
+                    html += '<!-- FIN (hasPerso3) -->'
+                  }
+
                 html += '</div>'
-              html += '<!-- FIN (hasSolarProduction || hasGas || hasWater) -->'
+              html += '<!-- FIN (hasSolarProduction || hasGas || hasWater || hasPerso3) -->'
             }
        
             ///////////////////////////////////////////////////////////////////////////
