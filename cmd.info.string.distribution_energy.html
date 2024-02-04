@@ -1574,7 +1574,7 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
                         html += '</span>'
                       html += '</div>'
                       html += '<svg width="80" height="30">'
-                        html += '<path d="M40 0 v60 h-49" id="perso3#id#" class="'
+                        html += '<path d="M40 0 v60 h-50" id="perso3#id#" class="'
                           if (HidePathPerso3#id#) html += ' hidden#id#'
                         html += '"/>'
                         html += '<circle r="3.4" class="perso3#id#'
@@ -2397,9 +2397,10 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
       height: 156px;
     }
     .lines#id# svg {
-      width: calc(100% - 160px);
       height: 100%;
+      width: 22%;
       max-width: 340px;
+      margin-left: 84px;
     }
     .row#id# {
       display: flex;
@@ -2418,6 +2419,12 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
       margin: 0 4px;
       height: 130px;
     }
+
+    .circle-container#id#.home#id# {
+      z-index : 1;
+    }
+
+
     .circle-container#id#.gas#id# {
       margin-left: 4px;
       margin-right: 4px;
@@ -2671,7 +2678,7 @@ if (!batteryFromGrid) if (debug#id#) console.log('| | !batteryFromGrid')
       transition: stroke-dashoffset 0.4s, stroke-dasharray 0.4s;
       fill: none;
     }
-    .solar#id# .circle#id# span, .perso1#id# .circle#id# span, .perso2#id# .circle#id# span, .gas#id# .circle#id# span, .water#id# .circle#id# span {
+    .solar#id# .circle#id# span, .perso1#id# .circle#id# span, .perso2#id# .circle#id# span, .perso3#id# .circle#id# span, .perso4#id# .circle#id# span, .perso5#id# .circle#id# span, .gas#id# .circle#id# span, .water#id# .circle#id# span {
       font-size: var(--fontSize_perso#id#);
     }
     @keyframes rotate-in#id# {
